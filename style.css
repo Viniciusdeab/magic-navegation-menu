@@ -22,32 +22,33 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #fff;
+    border-radius: 10px;
 }
 
-.navegation ul{
+.navegation ul {
     display: flex;
     width: 350px;
 }
 
-.navegation ul li{
+.navegation ul li {
     list-style: none;
-    position: relative;    
+    position: relative;
     width: 70px;
     height: 60px;
     z-index: 2;
 }
 
-.navegation ul li a{
+.navegation ul li a {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 100%;
-    text-align: center;    
+    text-align: center;
 }
 
-.navegation ul li a .icon{
+.navegation ul li a .icon {
     position: relative;
     display: block;
     line-height: 65px;
@@ -55,12 +56,13 @@ body {
     transition: 0.5s;
     color: #222327;
 }
-.navegation ul li.active a .icon{
-    transform: translateY(0);
+
+.navegation ul li.active a .icon {
+    transform: translateY(-32px);
     color: #2196F3;
 }
 
-.navegation ul li a .text{
+.navegation ul li a .text {
     position: absolute;
     background: #2196F3;
     color: #FFF;
@@ -70,8 +72,66 @@ body {
     font-size: 0.60em;
     letter-spacing: 0.05em;
     transition: 0.5s;
-    /* opacity: 0; */
+    opacity: 0;
     transform: translateY(15px)
 }
 
-.navegation ul li a .text{}
+.navegation ul li.active a .text {
+    transform: translateY(-4px);
+    opacity: 1;
+}
+
+.indicador {
+    position: absolute;
+    top: -35px;
+    width: 70px;
+    height: 70px;
+    background: #FFF;
+    border-radius: 50%;
+    z-index: 1;
+    transition: 0.5s;
+}
+
+.indicador::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: -27px;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border-radius: 50%;
+    z-index: 1;
+    transition: 0.5s;
+    box-shadow: 15px 18px #FFF;
+}
+
+.indicador::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    right: -27px;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border-radius: 50%;
+    z-index: 1;
+    transition: 0.5s;
+    box-shadow: -15px 18px #FFF;
+}
+
+.navegation ul li:nth-child(1).active ~.indicador {
+    transform: translateX(calc(70px * 0));
+}
+.navegation ul li:nth-child(2).active ~.indicador {
+    transform: translateX(calc(70px * 1));
+}
+.navegation ul li:nth-child(3).active ~.indicador {
+    transform: translateX(calc(70px * 2));
+}
+.navegation ul li:nth-child(4).active ~.indicador {
+    transform: translateX(calc(70px * 3));
+}
+.navegation ul li:nth-child(5).active ~.indicador {
+    transform: translateX(calc(70px * 4));
+}
